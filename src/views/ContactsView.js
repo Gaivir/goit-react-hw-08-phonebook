@@ -1,10 +1,10 @@
 import { Component } from "react";
 import { connect } from 'react-redux';
-import ContactList from './Components/ContactList/ContactList';
-import ContactForm from './Components/ContactForm/ContactForm';
-import Filter from './Components/Filter/Filter';
-import contactsOperations from '../src/redux/contacts/contacts-operations';
-import contactsSelectors from '../src/redux/contacts/contacts-selectors';
+import ContactList from '../Components/ContactList/ContactList';
+import ContactForm from '../Components/ContactForm/ContactForm';
+import Filter from '../Components/Filter/Filter';
+import contactsOperations from '../redux/contacts/contacts-operations';
+import contactsSelectors from '../redux/contacts/contacts-selectors';
 
 const styles = {
   app: {

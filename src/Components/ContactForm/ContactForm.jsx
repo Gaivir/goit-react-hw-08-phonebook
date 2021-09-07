@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import contactsOperations from '../../redux/contacts/contacts-operations';
 import shortid from 'shortid';
+import styles from './ContactForm.module.css';
 
 class ContactForm extends Component {
     state = {
@@ -56,8 +57,8 @@ class ContactForm extends Component {
     render() {
         return (
 
-                <form onSubmit={this.handleSubmit}>
-          <label htmlFor={ this.nameInputId}>name
+                <form className={styles.formContact} onSubmit={this.handleSubmit}>
+          <label htmlFor={ this.nameInputId} className={styles.formLabel}>Name
                     <input
                         type='text'
                         name='name'
@@ -68,7 +69,7 @@ class ContactForm extends Component {
                     </label>
                     
               
-                <label htmlFor={ this.numberInputId}>number
+                <label htmlFor={ this.numberInputId} className={styles.formLabel}>Number
                     <input
                         type='tel'
                     name='number'

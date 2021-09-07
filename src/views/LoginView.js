@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { authOperations } from '../redux/auth';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const styles = {
   form: {
     width: 230,
-    
+    display: 'flex',
+    flexDirection: 'column',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   label: {
     display: 'flex',
@@ -24,6 +30,8 @@ class LoginView extends Component{
 
   handleSubmit = e => {
     e.preventDefault();
+
+    this.props.onLogin(this.state);
       
     this.setState({ name: '', email: '', password: '' });
   };
@@ -71,4 +79,8 @@ class LoginView extends Component{
 
 
 
-export default LoginView;
+const mapDispatchToProps = {
+  onLogin: authOperations.logIn,
+};
+
+export default connect(null, mapDispatchToProps)(LoginView);

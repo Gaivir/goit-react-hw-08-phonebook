@@ -12,7 +12,7 @@ import {
     fetchContactError,
 } from './contacts-actions';
 
-axios.defaults.baseURL = 'http://localhost:4040';
+
 
 const fetchContacts = () => dispatch => {
     dispatch(fetchContactRequest());
@@ -21,7 +21,7 @@ const fetchContacts = () => dispatch => {
         .get('/contacts')
         .then(({ data }) =>
             dispatch(fetchContactSuccess(data)))
-        .catch(error => dispatch(fetchContactError(error)));
+        .catch(error => dispatch(fetchContactError(error.message)));
 
 }
 
@@ -37,7 +37,7 @@ const formSubmitHandler = (name, number) => dispatch => {
         .post('/contacts', contact)
         .then(({ data }) =>
             dispatch(addContactSuccess(data)),)
-        .catch(error => dispatch(addContactError(error)));
+        .catch(error => dispatch(addContactError(error.message)));
         
 };
 
@@ -47,7 +47,7 @@ const onDeleteContact = contactId => dispatch => {
     axios
         .delete(`/contacts/${contactId}`)
         .then(() => dispatch(deleteContactSuccess(contactId)))
-        .catch(error => dispatch(deleteContactError(error)));
+        .catch(error => dispatch(deleteContactError(error.message)));
 }
 
 

@@ -4,14 +4,16 @@ import { connect } from 'react-redux';
 import styles from './ContactList.module.css';
 import contactsOperations from '../../redux/contacts/contacts-operations';
 import contactsSelectors from '../../redux/contacts/contacts-selectors';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const ContactList = ({ contacts, onDeleteContact }) => (
     contacts.map(({ id, name, number }) => (
         <ul>
             <li key={id} className={styles.list}>{name}: {number}
-            <button onClick ={()=>onDeleteContact(id)}>Delete</button></li>
-        </ul>
+          <button class='btn btn-primary' onClick={() => onDeleteContact(id)}>Delete</button>
+          </li>
+        </ul> 
     ))
 );
 

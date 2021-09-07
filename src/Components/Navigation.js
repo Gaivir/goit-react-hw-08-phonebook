@@ -48,4 +48,4 @@ const mapStateToProps = state => ({
   isAuthenticated: authSelectors.getIsAuthenticated(state),
 })
 
-export default connect(mapStateToProps)(Navigation)
+export default connect(mapStateToProps)(Navigation);

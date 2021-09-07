@@ -1,4 +1,7 @@
-import React, { Component } from 'react';
+import { authOperations } from '../redux/auth';
+import { Component } from "react";
+import { connect } from "react-redux";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const styles = {
   form: {
@@ -28,6 +31,9 @@ class RegisterView extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
+    this.props.onRegister(this.state);
+
     this.setState({ name: '', email: '', password: '' });
   };
 
@@ -44,7 +50,7 @@ class RegisterView extends Component {
           autoComplete="off"
         >
           <label style={styles.label}>
-            Name
+            Ім`я
             <input
               type="text"
               name="name"
@@ -66,7 +72,7 @@ class RegisterView extends Component {
           </label>
 
           <label style={styles.label}>
-            Password
+            Пароль
             <input
               type="password"
               name="password"
@@ -84,6 +90,12 @@ class RegisterView extends Component {
   }
 }
 
+const mapDispatchToProps = {
+  onRegister: authOperations.register,
+};
 
+// const mapDispatchToProps = dispatch => ({
+//   onRegister: (data)=>dispatch(authOperations.register(data)) 
+// });
 
-export default RegisterView;
+export default connect(null, mapDispatchToProps)(RegisterView);
